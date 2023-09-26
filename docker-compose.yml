@@ -1,0 +1,25 @@
+# version: '3.8'
+services:
+  api:
+    build:
+      context: ./
+      # target: dev
+    volumes:
+      - .:/src
+    command: npm run start:dev
+    ports:
+      - "4111:4111"
+    environment:
+      NODE_ENV: development
+      DEBUG: nodejs-docker-express:*
+  couchdb:
+    image: couchdb
+    expose:
+      - 5984
+    ports:
+      - "4000:5984"
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=YOURPASSWORD
+      # NODE_ENV: development
+      # DEBUG: nodejs-docker-express:*

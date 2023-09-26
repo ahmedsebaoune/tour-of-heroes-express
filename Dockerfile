@@ -12,6 +12,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+# build to js
 
-EXPOSE 8080
+RUN npm run build
+
+EXPOSE 4111
 CMD [ "node", "server.js" ]
